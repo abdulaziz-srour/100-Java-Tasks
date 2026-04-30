@@ -7,7 +7,7 @@ class Task1Test {
     private Task1 task;
 
     @BeforeEach
-    void declare(){
+    void setUp(){
         task = new Task1();
     }
 
