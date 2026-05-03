@@ -35,4 +35,24 @@ class Task7Test {
     void fifthRomanNumberTest(){
         assertEquals(2020, task.fromRomanNumber("MMXX"));
     }
+
+    @Test
+    void firstDecimalNumberTest(){
+        assertEquals("XVII", task.toRomanNumber(17));
+    }
+
+    @Test
+    void secondDecimalNumberTest(){
+        assertEquals("CDXLIV", task.toRomanNumber(444));
+    }
+
+    @Test
+    void thirdDecimalNumberTest(){
+        assertEquals("MCMLXXI", task.toRomanNumber(1971));
+    }
+
+    @Test
+    void fourthDecimalNumberTest(){
+        assertEquals("MMXX", task.toRomanNumber(2020));
+    }
 }
