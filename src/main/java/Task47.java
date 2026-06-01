@@ -65,6 +65,37 @@ public class Task47 {
         return erased;
     }
 
+    /**
+     * Applies gravity to the board.
+     * All non-zero jewels fall down to the lowest possible empty spaces (0)
+     * in their respective columns, leaving zeros at the top.
+     *
+     * @param board the 2D integer array representing the current game board
+     */
+    static void fallDown(int[][] board){
+        int lastRow = board.length - 1;
+        for (int col = 0; col < board[lastRow].length; col++) {
+            int writeRow = lastRow;
+            int readRow = lastRow;
+
+            while(readRow >= 0){
+                if(board[writeRow][col] != 0){
+                    writeRow--;
+                    readRow--;
+                    continue;
+                }
+
+                if(board[readRow][col] != 0){
+                    board[writeRow][col] = board[readRow][col];
+                    board[readRow][col] = 0;
+                    writeRow--;
+                } else {
+                    readRow--;
+                }
+            }
+        }
+    }
+
     private static void printBoard(int[][] board){
         for (int[] row: board){
             for(int element: row){
@@ -87,6 +118,10 @@ public class Task47 {
         System.out.println("\nAfter");
         System.out.println("Erased?: " + eraseChains(firstBoard));
         printBoard(firstBoard);
+        System.out.println("\nFalldown:");
+        fallDown(firstBoard);
+        printBoard(firstBoard);
+
 
         int[][] secondBoard = {
                 {1, 1, 1, 2},
@@ -98,6 +133,9 @@ public class Task47 {
         printBoard(secondBoard);
         System.out.println("\nAfter");
         System.out.println("Erased?: " + eraseChains(secondBoard));
+        printBoard(secondBoard);
+        System.out.println("\nFalldown:");
+        fallDown(secondBoard);
         printBoard(secondBoard);
     }
 }
